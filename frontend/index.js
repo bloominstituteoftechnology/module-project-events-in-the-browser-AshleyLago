@@ -74,6 +74,8 @@ function moduleProject2() {
     let downBool = evt.key === keys.down;
     let leftBool = evt.key === keys.left;
     let rightBool = evt.key === keys.right;
+    
+    let spaceBool = evt.key === keys.right; // Task 4
 
     let curTarget = document.querySelector(".targeted");
 
@@ -105,9 +107,17 @@ function moduleProject2() {
     }
     // Task 3
 
-    // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
+    // Task 4
+    else if (spaceBool) {
+      let bug = curTarget.firstChild;
+      if (bug && (bug.dataset.status === "alive")) {
+        bug.dataset.status = "dead";
+        bug.parentElement.style.backgroundColor = "red";
+      }
 
-    // 👉 TASK 5 - End the game 👈
+    }
+    // Task 4
+
   })
   // 👆 WORK WORK ABOVE THIS LINE 👆
 }
