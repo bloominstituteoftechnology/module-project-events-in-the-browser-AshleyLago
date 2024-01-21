@@ -36,7 +36,10 @@ function moduleProject2() {
       square.classList.add('square')
       row.appendChild(square)
       square.addEventListener('click', () => {
-        // 👉 TASK 2 - Use a click handler to target a square 👈
+        if (!square.classList.contains("targeted")) {
+          document.querySelector(".targetd").classList.remove("targeted");
+          square.classList.add("targeted");
+        }
       })
     }
   }
