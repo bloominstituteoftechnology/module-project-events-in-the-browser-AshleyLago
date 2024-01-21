@@ -36,10 +36,12 @@ function moduleProject2() {
       square.classList.add('square')
       row.appendChild(square)
       square.addEventListener('click', () => {
+        // Task 2
         if (!square.classList.contains("targeted")) {
-          document.querySelector(".targetd").classList.remove("targeted");
+          document.querySelector(".targeted").classList.remove("targeted");
           square.classList.add("targeted");
         }
+        // Task 2
       })
     }
   }
@@ -67,7 +69,41 @@ function moduleProject2() {
   })
 
   document.addEventListener('keydown', evt => {
-    // 👉 TASK 3 - Use the arrow keys to highlight a new square 👈
+    // Task 3
+    let upBool = evt.key === keys.up;
+    let downBool = evt.key === keys.down;
+    let leftBool = evt.key === keys.left;
+    let rightBool = evt.key === keys.right;
+
+    let curTarget = document.querySelector(".targeted");
+
+    if(upBool) {
+      if (curTarget.parentElement.previousElementSibling) {
+        let i = Array.from(curTarget.parentElement.children).indexOf(curTarget);
+        curTarget.classList.remove("targeted");
+        curTarget.parentElement.previousElementSibling.children[i].classList.add("targeted");
+      }
+    }
+    else if (downBool) {
+      if (curTarget.parentElement.nextElementSibling) {
+        let i = Array.from(curTarget.parentElement.children).indexOf(curTarget);
+        curTarget.classList.remove("targeted");
+        curTarget.parentElement.nextElementSibling.children[i].classList.add("targeted");
+      }
+    }
+    else if (leftBool) {
+      if(curTarget.previousElementSibling) {
+        curTarget.classList.remove("targeted");
+        curTarget.previousElementSibling.classList.add("targeted");
+      }
+    }
+    else if (rightBool) {
+      if(curTarget.nextElementSibling) {
+        curTarget.classList.remove("targeted");
+        curTarget.nextElementSibling.classList.add("targeted");
+      } 
+    }
+    // Task 3
 
     // 👉 TASK 4 - Use the space bar to exterminate a mosquito 👈
 
