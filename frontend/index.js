@@ -115,6 +115,19 @@ function moduleProject2() {
         bug.parentElement.style.backgroundColor = "red";
       }
 
+      // Task 5
+      let aliveBugs = document.querySelectorAll("[data-status=alive]");
+      if (aliveBugs.length === 0) {
+        let time = getTimeElapsed();
+        document.querySelector("p.info").textContent = "Extermination completed in "+(time/1000)+" seconds!";
+        let rest = document.createElement("button");
+        rest.textContent = "Restart";
+        rest.addEventListener("click", () => {
+          location.reload()
+        });
+        document.querySelector("h2").insertAdjacentElement("beforeend",rest);
+      }
+      // Task 5
     }
     // Task 4
 
